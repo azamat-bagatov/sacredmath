@@ -6,88 +6,38 @@ void settings() {
   size(800, 800, P2D);
   //fullScreen(P2D);
 }
+
+
+
 void setup() {
-  //grate = new Grate(100, 50);
   grate = new Grate(width/10, height/10);
-      background(palette[0]);
+    background(palette[0]);
   stroke(palette[1]);
   grate.draw();
   noLoop();
-    //videoExport = new VideoExport(this);
-  //videoExport.setFrameRate(60);
-  //videoExport.startMovie();
+
   surface.setLocation(0,0);
 }
 float randOffset = random(0, 1);
 void draw() {
 
-  //grate.update();
-  //randOffset+=0.005;
-  //for (int i = 0; i< grate.sizeX; i++) {
-  //  for (int j = 0; j<grate.sizeY; j++) {
-  //    //grate.valueTable[i][j] = int(4*noise(float(i)/10, float(j)/10, randOffset));
-  //    float nois = map(noise(float(i)/50,float(j)/50,randOffset),0,1,0,2);
-  //    //float nois = noise(dist(i,j,grate.sizeX/2,grate.sizeY/2),randOffset);
-  //    //grate.valueTable[i][j] =  int(nois*(i/(abs(i-j)+1)+j/(abs(j-i)+1)))%4;
-  //    grate.valueTable[i][j] = int(nois*dist(i,j,width/2/grate.cellSize,height/2/grate.cellSize))%4;
-  //    //grate.valueTable[i][j] = int(nois*(i/10+j/10))%4;
-  //    //grate.valueTable[i][j] = int(int(nois)%2*dist(i,j,width/2/grate.cellSize,height/2/grate.cellSize) + ((1-int(nois)%2)*int(sq(j+i))))%4;
-      
-  //  }
-  //}
-  //grate.draw();
-  //videoExport.saveFrame();
 }
-int pointer = -1;
+
+int pointer = 0;
+
 void keyPressed() {
   if (key == 'q') {
     grate.fillRandom();
     } else if (key =='s') {
     saveFrame(pointer + ".png");
-  } else if (key =='w') {
-    background(10);
-    pointer++; if(pointer>17) pointer = 0;
-    println(pointer);
-    float randOffset = random(0, 1);
-    for (int i = 0; i< grate.sizeX; i++) {
-      for (int j = 0; j<grate.sizeY; j++) {
-        switch (pointer){
-        case 0: grate.valueTable[i][j] = int((float)i/10-(float)j/10+(sq((float)i))/100-sq((float)j)/100)%4;//(i+j)%4;
-        break;
-        case 1:grate.valueTable[i][j] = abs(i-j)%4;
-        break;
-        case 2:grate.valueTable[i][j] = int(sqrt(j+i))%4;
-        break;
-        case 3:grate.valueTable[i][j] = int(sq(j+i))%4;
-        break;
-        case 4:grate.valueTable[i][j] = int(sq(i)+sq(j))%4;
-        break;
-        case 5:grate.valueTable[i][j] = int(dist(i,j,j,i))%4;
-        break;
-        case 6: grate.valueTable[i][j] = int(dist(i*grate.cellSize,j*grate.cellSize,width/2,height/2))%4;
-        break;case 7:grate.valueTable[i][j] = int(dist(i,j,width/2/grate.cellSize,height/2/grate.cellSize))%4;
-        break;case 8:grate.valueTable[i][j] = int((i+j)/10)%4;
-        break;case 9:grate.valueTable[i][j] = int((i/10+j)/10)%4;
-        break;case 10:grate.valueTable[i][j] = int(i/10+j/10)%4;
-        break;case 11:grate.valueTable[i][j] = int(i/10+j/20)%4;
-        break;case 12:grate.valueTable[i][j] = int( abs(4*sin(i+j)) )%4;
-        break;case 13:grate.valueTable[i][j] =  (abs(i-grate.sizeX/2)+abs(j-grate.sizeY/2))%4;
-        break;case 14:grate.valueTable[i][j] =  int((i/(abs(i-j)+1)+j/(abs(j-i)+1)))%4;
-        break;case 15:grate.valueTable[i][j] =  int((i/(abs(i-j)%10+1)+j/(abs(j-i)%10+1)))%4;
-        break;case 16:grate.valueTable[i][j] = int(4*noise(float(i)/10, float(j)/10, randOffset));
-        break;case 17:grate.valueTable[i][j] = int (noise(float(i)/100,float(j)/100)*(i+j))%4;
-        break;
-        }
-       float nois = noise(float(i)/100,float(j)/100);
-        //grate.valueTable[i][j] = int(nois*(i/10+j/10))%4;  
-        //grate.valueTable[i][j] = int(nois*dist(i,j,width/2/grate.cellSize,height/2/grate.cellSize))%4;
-      }
-    }
-  }
-      background(palette[0]);
+  } 
+  background(palette[0]);
   stroke(palette[1]);
   grate.draw();
 }
+
+
+
 void mouseClicked() {
   int i = mouseX/grate.cellSize;
   int j = mouseY/grate.cellSize;
@@ -98,6 +48,9 @@ void mouseClicked() {
   background(10);
   grate.draw();
 }
+
+
+
 class Grate {
   int sizeX, sizeY, cellSize;
   int[][] valueTable;
@@ -148,7 +101,7 @@ class Grate {
       }
     }
   }
-}
+
 boolean randomBool() {
   return random(1) > .5;
 }
