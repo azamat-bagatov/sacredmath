@@ -174,6 +174,7 @@ class Grate {
          fill(palette[0]);
          rect(i*cellSize, j*cellSize, cellSize, cellSize);
          stroke(palette[1]);
+         strokeWeight(5);
           if (valueTable[i][j] == 0 ) {
           line(i*cellSize, j*cellSize, (i+1)*cellSize, (j+1)*cellSize);
           //noStroke();
@@ -184,7 +185,7 @@ class Grate {
           //else fill(palette[2]);
           //triangle(i*cellSize, j*cellSize, (i+1)*cellSize, (j+1)*cellSize, i*cellSize, (j+1)*cellSize);
         } else if( valueTable[i][j] == 1) {
-          line((i+1)*cellSize, j*cellSize, i*cellSize, (j+1)*cellSize);
+          //line((i+1)*cellSize, j*cellSize, i*cellSize, (j+1)*cellSize);
           //noStroke();
           //if ( valueTable[i][j] == 2) fill(palette[2]);
           //else fill(palette[1]);
